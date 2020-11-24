@@ -67,11 +67,11 @@ def bloggers():
         conn = mariadb.connect(user=dbcreds.user, password=dbcreds.password, host=dbcreds.host, port=dbcreds.port, database=dbcreds.database,)
         cursor = conn.cursor()
         if blogger_username != "" and blogger_username != None:
-           cursor.execute("UPDATE blogger SET username=? WHERE id=?", [blogger_username, blogger_id,])
+           cursor.execute("UPDATE blogger SET username=? WHERE id=?", [blogger_username, blogger_id])
         if blogger_content != "" and blogger_content != None:
-            cursor.execute("UPDATE blogger SET content=? WHERE id=?", [blogger_content, blogger_id,])
+            cursor.execute("UPDATE blogger SET content=? WHERE id=?", [blogger_content, blogger_id])
         if blogger_created_at != "" and blogger_created_at != None:
-            cursor.execute("UPDATE blogger SET created_at=? WHERE id=?", [blogger_created_at, blogger_id,])      
+            cursor.execute("UPDATE blogger SET created_at=? WHERE id=?", [blogger_created_at, blogger_id])      
         conn.commit()
         rows = cursor.rowcount
       except Exception as error:
@@ -80,7 +80,7 @@ def bloggers():
       finally:
        if(cursor != None):
          cursor.close()
-       if(conn != None):
+       if(conn != None): 
          conn.rollback()
          conn.close()
        if(rows == 1):
