@@ -62,6 +62,7 @@ def bloggers():
       blogger_username = request.json.get("username")
       blogger_content = request.json.get("content")
       blogger_created_at = request.json.get("created_at")
+      blogger_id = request.json.get("id")
       rows = None
       try:
         conn = mariadb.connect(user=dbcreds.user, password=dbcreds.password, host=dbcreds.host, port=dbcreds.port, database=dbcreds.database,)
